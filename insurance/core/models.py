@@ -48,7 +48,7 @@ class Dependent(BaseModel):
     observation = models.TextField(null=True)
 
 class QuestionType(BaseModel):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
 
 class Question(BaseModel):
     question_type = models.ForeignKey(QuestionType, on_delete=models.CASCADE)
