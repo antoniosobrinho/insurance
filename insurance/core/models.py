@@ -71,5 +71,5 @@ class AnswerTypeObservation(BaseModel):
         unique_together = ('insured', 'question_type')
 
 class Recomentation(BaseModel):
-    insured = models.ForeignKey(Insured, on_delete=models.CASCADE, primary_key=True)
+    insured = models.ForeignKey(Insured, on_delete=models.CASCADE)
     recomentation = models.TextField()
