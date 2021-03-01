@@ -5,14 +5,14 @@ class QuestionTypeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = QuestionType
+        fields = ['id', 'name']
 
     def to_representation(self, instance):
 
-        representation = dict()
-        representation.update( {
-           'id': instance.id,
-           'name': instance.name,
-           'questions': list()
+        representation = super().to_representation(instance)
+
+        representation.update({
+            'questions': list()
         })
 
         for question in instance.question_set.all():
@@ -31,3 +31,13 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = '__all__'
+
+    def to_representation(self, instance):
+
+        representation = super().to_representation(instance)
+
+        representation.update({
+            'question_type_name': instance.question_type.name
+        })
+
+        return representation
