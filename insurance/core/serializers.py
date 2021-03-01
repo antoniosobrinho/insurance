@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import QuestionType, Question
+from .models import QuestionType, Question, Insured
 
 class QuestionTypeSerializer(serializers.ModelSerializer):
 
@@ -41,3 +41,9 @@ class QuestionSerializer(serializers.ModelSerializer):
         })
 
         return representation
+
+class InsuredSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Insured
+        fields = '__all__'
